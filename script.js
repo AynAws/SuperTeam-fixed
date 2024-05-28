@@ -96,8 +96,13 @@ function nameGen() {
         'Malcolm',
         'Malik',
         'Trevor',
-        'Layci',
-        'Pranshu'
+        'Daniyal',
+        'Pranshu',
+        'Ann',
+        'Arman',
+        'Rohan',
+        'Trevor',
+        'Samay'
     ];
     first = firstName[n(firstName.length)];
 
@@ -137,26 +142,34 @@ function nameGen() {
         'Little',
         'Shabazz',
         'Barrett',
-        'Acquista'
+        'Ahmed',
+        'Agarwal',
+        'Alex',
+        'Ananikyan',
+        'Banoor',
+        'Barrett',
+        'Benowitz'
     ];
     last = lastName[n(lastName.length)];
 
     const nickName = [
-        '“The Hound”',
-        '“Littlefinger”',
-        '“The Undertaker”',
-        'De',
-        'Vi',
-        'ibn',
-        'bin',
-        'of the Knife',
-        '“Blackfish”',
-        '“Hodor”',
-        'Mohamed',
-        'el-'
+        ' “The Hound” ',
+        ' “Littlefinger” ',
+        ' “The Undertaker” ',
+        ' De ',
+        ' Vi ',
+        ' ibn ',
+        ' bin ',
+        ' of the Knife ',
+        ' “Blackfish” ',
+        ' “Hodor” ',
+        ' Mohamed ',
+        ' el-',
+        ' “Rohirrim” ',
+        ' “D.J.” '
     ];
     if (n(20) === 19) {
-        nick = ` ${nickName[n(nickName.length)]} `;
+        nick = `${nickName[n(nickName.length)]}`;
     } else {
         nick = ' ';
     }
@@ -201,7 +214,12 @@ function skillsGen() {
 
 function quipGen() { // DONT FORGET
     const quipArray = [
+        `Thinks ${teamMembers[n(teamMembers.length)].name} is hot.`,
+        `Drinks apple cider cold.`,
+        `Thinks almonds are overrated.`
     ]
+    const quip = quipArray[n(quipArray.length)];
+    return quip;
 };
 
 const teamMembers =  [
@@ -359,10 +377,15 @@ teamMembers.forEach((member, index) => {
     switch (index) {
         case 0:
         case 1:
+        case 2:
             member.position = positionGen();
             break;
     }
     member.skills = skillsGen();
+});
+
+teamMembers.forEach((member) => {
+    member.biography = quipGen();
 });
 
 antiTeamMembers.forEach((antiMember, index) => {
