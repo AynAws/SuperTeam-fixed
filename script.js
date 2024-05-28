@@ -102,7 +102,9 @@ function nameGen() {
         'Arman',
         'Rohan',
         'Trevor',
-        'Samay'
+        'Samay',
+        'Nunnally',
+        'Suzaku'
     ];
     first = firstName[n(firstName.length)];
 
@@ -148,7 +150,8 @@ function nameGen() {
         'Ananikyan',
         'Banoor',
         'Barrett',
-        'Benowitz'
+        'Benowitz',
+        'Kururugi'
     ];
     last = lastName[n(lastName.length)];
 
@@ -411,8 +414,33 @@ teamMembers.forEach((member, index) => {
             member.skills = positionSkillsGen();
             member.category = 'Forward';
             break;
+        case 3:
         case 4:
-        
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            member.category = 'Defender';
+    }
+});
+
+antiTeamMembers.forEach((member, index) => {
+    member.name = nameGen();
+    switch (index) {
+        case 0:
+        case 1:
+        case 2:
+            member.position = positionGen();
+            member.skills = positionSkillsGen();
+            member.category = 'Forward';
+            break;
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            member.category = 'Defender';
     }
 });
 
@@ -424,9 +452,7 @@ antiTeamMembers.forEach((antiMember, index) => {
     let antiName = () => antiMember.name = nameGen();
     let antiPos = () => antiMember.position = nameGen();
     let antiSkill = () => antiMember.name = nameGen();
-})
-
-// script.js
+});
 
 function generateTeamCards(team, teamID) {
     const teamCardsContainer = document.getElementById(teamID);
@@ -435,30 +461,30 @@ function generateTeamCards(team, teamID) {
         const card = document.createElement('div');
         card.classList.add('col-12', 'col-sm-6', 'col-md-4', 'mb-3'); // Use Bootstrap classes for responsiveness
 
-        let backgroundColor;
+        let borderColor;
 
         switch (member.category.toLowerCase()) {
             case 'forward':
-                backgroundColor = '#ffc107';
+                borderColor = '#ffc107';
                 break;
             case 'midfielder':
-                backgroundColor = '#28a745';
+                borderColor = '#28a745';
                 break;
             case 'defender':
-                backgroundColor = '#007bff';
+                borderColor = '#007bff';
                 break;
             case 'goalkeeper':
-                backgroundColor = '#dc3545';
+                borderColor = '#dc3545';
                 break;
             default:
-                backgroundColor = '#6c757d';
-        }
+                borderColor = '#6c757d';
+        };
 
-        card.style.backgroundColor = backgroundColor;
+        card.style.borderColor = borderColor;
 
         const skillsList = member.skills.map(skill => `<li>${skill}</li>`).join('');
         card.innerHTML = `
-            <div class="card">
+            <div class="card" style="border-color: ${borderColor};">
                 <div class="card-header">${member.name}</div>
                 <div class="card-body">
                     <p><strong>Position:</strong> ${member.position}</p>
@@ -476,7 +502,7 @@ function generateTeamCards(team, teamID) {
 
         teamCardsContainer.appendChild(card);
     });
-}
+};
 
 window.onload = () => {
     generateTeamCards(teamMembers, 'teamCards');
