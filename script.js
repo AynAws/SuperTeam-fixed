@@ -199,7 +199,7 @@ function positionGen() {
 
 function positionSkillsGen() {
     const skillsArray = [
-        'Headbutting', 'Dribbling', 'Shooting', 'Passing', 'Charging', 'Hazardous Material Recovery'
+        'Hazardous Material Recovery'
     ]
     const skill1 = skillsArray[n(skillsArray.length)];
     let newArray = skillsArray.filter(item => item !== skill1);
@@ -395,45 +395,54 @@ antiTeamMembers.forEach((antiMember, index) => {
     let antiSkill = () => antiMember.name = nameGen();
 })
 
+// script.js
+
+// script.js
+
 function generateTeamCards(team, teamID) {
     const teamCardsContainer = document.getElementById(teamID);
-    team.forEach( (member, index) => {
+    let row;
+
+    team.forEach((member, index) => {
+        // Start a new row for every two cards on mobile screens, three cards on larger screens
+        if (index % 2 === 0) {
+            if (row) {
+                teamCardsContainer.appendChild(row);
+            }
+            row = document.createElement('div');
+            row.classList.add('row');
+        }
+
         const card = document.createElement('div');
-        card.classList.add('col-md-4');
-        // Styling card based off of position
+        card.classList.add('col-md-4', 'mb-3'); // Bootstrap classes for responsiveness
+
         let backgroundColor;
 
-        switch (member.position.toLowerCase()) { // Needs updating when I make the new positions
+        switch (member.position.toLowerCase()) {
             case 'forward':
-              backgroundColor = '#ffc107'; // Yellow for forwards
-              break;
+                backgroundColor = '#ffc107'; // Yellow for forwards
+                break;
             case 'midfielder':
-              backgroundColor = '#28a745'; // Green for midfielders
-              break;
+                backgroundColor = '#28a745'; // Green for midfielders
+                break;
             case 'defender':
-              backgroundColor = '#007bff'; // Blue for defenders
-              break;
+                backgroundColor = '#007bff'; // Blue for defenders
+                break;
             case 'goalkeeper':
-              backgroundColor = '#dc3545'; // Red for goalkeepers
-              break;
+                backgroundColor = '#dc3545'; // Red for goalkeepers
+                break;
             default:
-              backgroundColor = '#6c757d'; // Gray for other positions
-          }
-
-        let row, endRow;
-        index === 0 || index === 3 || index === 6 ? (row = '<div class="row">', endRow = '') // creates a new row every 3 cards
-        : index === 2 || index === 5 || index === 8 ? (row = '', endRow = '</div>') // ends the row every third card
-        : (row = '', endRow = '');
+                backgroundColor = '#6c757d'; // Gray for other positions
+        }
 
         card.style.backgroundColor = backgroundColor;
-        // Create a list of skills with li tags around each element
+
         const skillsList = member.skills.map(skill => `<li>${skill}</li>`).join('');
         card.innerHTML = `
-    ${row}
-        <div class="card">
-            <div class="card-header">${member.name}</div>
-            <div class="card-body">
-                    <p><strong>Positon:</strong> ${member.position}</p>
+            <div class="card">
+                <div class="card-header">${member.name}</div>
+                <div class="card-body">
+                    <p><strong>Position:</strong> ${member.position}</p>
                     <p><strong>Skills:</strong>
                         <ul>
                             ${skillsList}
@@ -442,12 +451,20 @@ function generateTeamCards(team, teamID) {
                     <p><strong>Strengths:</strong> ${member.strengths}</p>
                     <p><strong>Weaknesses:</strong> ${member.weaknesses}</p>
                     <p><strong>Biography:</strong> ${member.biography}</p>
+                </div>
             </div>
-        </div>
-    ${endRow}
         `;
-        teamCardsContainer.appendChild(card);
-    })
-};
 
-window.onload = generateTeamCards(teamMembers, 'teamCards'), generateTeamCards(antiTeamMembers, 'antiTeamCards');
+        row.appendChild(card);
+    });
+
+    // Append the last row if it exists
+    if (row) {
+        teamCardsContainer.appendChild(row);
+    }
+}
+
+window.onload = () => {
+    generateTeamCards(teamMembers, 'teamCards');
+    generateTeamCards(antiTeamMembers, 'antiTeamCards');
+};

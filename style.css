@@ -21,3 +21,19 @@
     border-radius: 10px;
     width: 20px;
 }
+
+/* Two columns per row on mobile screens */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* One column per row on very small screens */
+@media (max-width: 576px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
