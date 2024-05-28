@@ -197,7 +197,7 @@ function positionGen() {
     return position;
 };
 
-function skillsGen() {
+function positionSkillsGen() {
     const skillsArray = [
         'Headbutting', 'Dribbling', 'Shooting', 'Passing', 'Charging', 'Hazardous Material Recovery'
     ]
@@ -216,7 +216,8 @@ function quipGen() { // DONT FORGET
     const quipArray = [
         `Thinks ${teamMembers[n(teamMembers.length)].name} is hot.`,
         `Drinks apple cider cold.`,
-        `Thinks almonds are overrated.`
+        `Thinks almonds are overrated.`,
+        `Trusts ${teamMembers[n(teamMembers.length)].name}.`
     ]
     const quip = quipArray[n(quipArray.length)];
     return quip;
@@ -379,9 +380,9 @@ teamMembers.forEach((member, index) => {
         case 1:
         case 2:
             member.position = positionGen();
+            member.skills = positionSkillsGen();
             break;
     }
-    member.skills = skillsGen();
 });
 
 teamMembers.forEach((member) => {
