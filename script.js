@@ -397,7 +397,7 @@ antiTeamMembers.forEach((antiMember, index) => {
 
 function generateTeamCards(team, teamID) {
     const teamCardsContainer = document.getElementById(teamID);
-    team.forEach(member => {
+    team.forEach( (member, index) => {
         const card = document.createElement('div');
         card.classList.add('col-md-4');
         // Styling card based off of position
@@ -420,14 +420,18 @@ function generateTeamCards(team, teamID) {
               backgroundColor = '#6c757d'; // Gray for other positions
           }
 
+        let row, endRow;
+        index === 0 || index === 3 || index === 6 ? (row = '<div class="row">', endRow = '') // creates a new row every 3 cards
+        : index === 2 || index === 5 || index === 8 ? (row = '', endRow = '</div>') // ends the row every third card
+        : (row = '', endRow = '');
+
         card.style.backgroundColor = backgroundColor;
         // Create a list of skills with li tags around each element
         const skillsList = member.skills.map(skill => `<li>${skill}</li>`).join('');
         card.innerHTML = `
+    ${row}
         <div class="card">
-            <div class="card-header">
-            ${member.name}
-            </div>
+            <div class="card-header">${member.name}</div>
             <div class="card-body">
                     <p><strong>Positon:</strong> ${member.position}</p>
                     <p><strong>Skills:</strong>
@@ -440,6 +444,7 @@ function generateTeamCards(team, teamID) {
                     <p><strong>Biography:</strong> ${member.biography}</p>
             </div>
         </div>
+    ${endRow}
         `;
         teamCardsContainer.appendChild(card);
     })
