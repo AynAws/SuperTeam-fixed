@@ -18,7 +18,7 @@ function nameGen() {
         'Lil ',
         'Hodor ',
         'Lady ',
-        'Duchess',
+        'Duchess ',
         'Empress ',
         'Queen ',
         'Baroness ',
@@ -179,18 +179,6 @@ function nameGen() {
 
 function positionGen() {
     const positionArray = [
-        'Benchwarmer',
-        'Forward',
-        'Backward',
-        'Midward',
-        'Upward',
-        'Downward',
-        'Leftward',
-        'Rightward',
-        'Ward',
-        'Hostage',
-        'KindaEastButNotReallyEastLikeMoreNortheastButNotAllTheWayNortheastward',
-        'Wardward',
         'Hodor'
     ];
     const position = positionArray[n(positionArray.length)];
@@ -199,7 +187,11 @@ function positionGen() {
 
 function positionSkillsGen() {
     const skillsArray = [
-        'Hazardous Material Recovery'
+        'Hazardous Material Recovery Operator',
+        'Assault Operator',
+        'Stealth Operator',
+        'Demolitions Operator',
+        'Medical Operator'
     ]
     const skill1 = skillsArray[n(skillsArray.length)];
     let newArray = skillsArray.filter(item => item !== skill1);
@@ -212,16 +204,52 @@ function positionSkillsGen() {
     return [skill1, skill2, skill3];
 };
 
-function quipGen() { // DONT FORGET
+function quipGen() {
     const quipArray = [
         `Thinks ${teamMembers[n(teamMembers.length)].name} is hot.`,
         `Drinks apple cider cold.`,
         `Thinks almonds are overrated.`,
-        `Trusts ${teamMembers[n(teamMembers.length)].name}.`
-    ]
+        `Trusts ${teamMembers[n(teamMembers.length)].name}.`,
+        `Believes in ghosts.`,
+        `Is secretly a superhero.`,
+        `Wears socks with sandals.`,
+        `Is afraid of clowns.`,
+        `Has a pet iguana named Spike.`,
+        `Can recite pi to 100 digits.`,
+        `Likes pineapple on pizza.`,
+        `Has a fear of heights.`,
+        `Thinks ${teamMembers[n(teamMembers.length)].name} is the smartest person alive.`,
+        `Didn't eat an apple once.`,
+        `Believes that unicorns are real.`,
+        `Sleeps with a nightlight.`,
+        `Once ate a whole pizza by alone.`,
+        `Wears mismatched socks on purpose.`,
+        `Is terrified of spiders.`,
+        `Operates at 0.0008334 OPS.`,
+        `Thinks ${teamMembers[n(teamMembers.length)].name} is hilarious.`,
+        `Once met a celebrity.`,
+        `Always carries a lucky charm.`,
+        `Believes in fairies.`,
+        `Can play the piano by ear.`,
+        `Is always 30 minutes late.`,
+        `Has a signature dance move.`,
+        `Has a fear of flying.`,
+        `Was an elementary school kickball champion.`,
+        `Thinks ${teamMembers[n(teamMembers.length)].name} is suspicious.`,
+        `Enjoys playing board games.`,
+        `Is a coffee connoisseur.`,
+        `Enjoys people watching.`,
+        `Accidentally broke ${teamMembers[n(teamMembers.length)].name}'s humerus due to excessive blunt trauma to the ulmar nerve.`,
+        `Is afraid of the dark.`,
+        `Thinks ${teamMembers[n(teamMembers.length)].name} is suspicious.`,
+        `Is an adrenaline junkie.`,
+        `Loves solving murder mysteries. Always ends up with George Washington as the prime suspect.`,
+        `Rat licker.`
+    ];
     const quip = quipArray[n(quipArray.length)];
     return quip;
-};
+}
+
 
 const teamMembers =  [
     {
@@ -381,7 +409,10 @@ teamMembers.forEach((member, index) => {
         case 2:
             member.position = positionGen();
             member.skills = positionSkillsGen();
+            member.category = 'Forward';
             break;
+        case 4:
+        
     }
 });
 
@@ -406,7 +437,7 @@ function generateTeamCards(team, teamID) {
 
         let backgroundColor;
 
-        switch (member.position.toLowerCase()) {
+        switch (member.category.toLowerCase()) {
             case 'forward':
                 backgroundColor = '#ffc107';
                 break;

@@ -1,12 +1,11 @@
 /* Fancy Scroll */
-
 ::-webkit-scrollbar {
     width: 10px;
 }
     
 ::-webkit-scrollbar-thumb:hover {
     width: 10px;
-  }
+}
     
 ::-webkit-scrollbar-track {
     background: white;
@@ -36,4 +35,34 @@
         flex: 0 0 100%;
         max-width: 100%;
     }
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card-body li {
+    background: #f8f9fa;
+    margin: 0.2rem 0;
+    padding: 0.4rem;
+    border-radius: 5px;
 }
