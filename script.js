@@ -104,7 +104,10 @@ function nameGen() {
         'Trevor',
         'Samay',
         'Nunnally',
-        'Suzaku'
+        'Suzaku',
+        'Migi',
+        'Shinichi',
+        'Mamoru'
     ];
     first = firstName[n(firstName.length)];
 
@@ -151,7 +154,9 @@ function nameGen() {
         'Banoor',
         'Barrett',
         'Benowitz',
-        'Kururugi'
+        'Kururugi',
+        'Izumi',
+        'Uda'
     ];
     last = lastName[n(lastName.length)];
 
@@ -248,6 +253,10 @@ function quipGen() {
         `Is an adrenaline junkie.`,
         `Loves solving murder mysteries. Always ends up with George Washington as the prime suspect.`,
         `Rat licker.`
+        `Claimed to have alien hand syndrome after being seen "self-harrsing" by ${teamMembers[n(teamMembers.length)].name}.`,
+        `Calls right hand "Migi".`,
+        `Calls neck and lower jaw "Jaw".`
+        
     ];
     const quip = quipArray[n(quipArray.length)];
     return quip;
