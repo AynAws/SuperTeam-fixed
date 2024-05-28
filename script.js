@@ -397,42 +397,30 @@ antiTeamMembers.forEach((antiMember, index) => {
 
 // script.js
 
-// script.js
-
 function generateTeamCards(team, teamID) {
     const teamCardsContainer = document.getElementById(teamID);
-    let row;
 
     team.forEach((member, index) => {
-        // Start a new row for every two cards on mobile screens, three cards on larger screens
-        if (index % 2 === 0) {
-            if (row) {
-                teamCardsContainer.appendChild(row);
-            }
-            row = document.createElement('div');
-            row.classList.add('row');
-        }
-
         const card = document.createElement('div');
-        card.classList.add('col-md-4', 'mb-3'); // Bootstrap classes for responsiveness
+        card.classList.add('col-12', 'col-sm-6', 'col-md-4', 'mb-3'); // Use Bootstrap classes for responsiveness
 
         let backgroundColor;
 
         switch (member.position.toLowerCase()) {
             case 'forward':
-                backgroundColor = '#ffc107'; // Yellow for forwards
+                backgroundColor = '#ffc107';
                 break;
             case 'midfielder':
-                backgroundColor = '#28a745'; // Green for midfielders
+                backgroundColor = '#28a745';
                 break;
             case 'defender':
-                backgroundColor = '#007bff'; // Blue for defenders
+                backgroundColor = '#007bff';
                 break;
             case 'goalkeeper':
-                backgroundColor = '#dc3545'; // Red for goalkeepers
+                backgroundColor = '#dc3545';
                 break;
             default:
-                backgroundColor = '#6c757d'; // Gray for other positions
+                backgroundColor = '#6c757d';
         }
 
         card.style.backgroundColor = backgroundColor;
@@ -455,13 +443,8 @@ function generateTeamCards(team, teamID) {
             </div>
         `;
 
-        row.appendChild(card);
+        teamCardsContainer.appendChild(card);
     });
-
-    // Append the last row if it exists
-    if (row) {
-        teamCardsContainer.appendChild(row);
-    }
 }
 
 window.onload = () => {
