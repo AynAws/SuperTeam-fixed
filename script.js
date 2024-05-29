@@ -187,7 +187,11 @@ function nameGen() {
 
 function positionGen() {
     const positionArray = [
-        'Hodor'
+        'Hazardous Material Recovery Operator',
+        'Assault Operator',
+        'Stealth Operator',
+        'Demolitions Operator',
+        'Medical Operator'
     ];
     const position = positionArray[n(positionArray.length)];
     return position;
@@ -195,11 +199,11 @@ function positionGen() {
 
 function positionSkillsGen() {
     const skillsArray = [
-        'Hazardous Material Recovery Operator',
-        'Assault Operator',
-        'Stealth Operator',
-        'Demolitions Operator',
-        'Medical Operator'
+        'Deft',
+        'Tough',
+        'Fortuitous',
+        'Strong',
+        'Stalwart'
     ]
     const skill1 = skillsArray[n(skillsArray.length)];
     let newArray = skillsArray.filter(item => item !== skill1);
