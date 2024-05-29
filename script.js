@@ -256,7 +256,7 @@ function quipGen() {
         `Thinks ${teamMembers[n(teamMembers.length)].name} is suspicious.`,
         `Is an adrenaline junkie.`,
         `Loves solving cold cases. Always ends up with ${teamMembers[n(teamMembers.length)].name} as the prime suspect.`,
-        `Rat licker.`
+        `Rat licker.`,
         `Claimed to have alien hand syndrome after being seen "self-harrsing" by ${teamMembers[n(teamMembers.length)].name}.`,
         `Calls right hand "Migi".`,
         `Calls neck and lower jaw "Jaw".`
