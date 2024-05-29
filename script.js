@@ -185,7 +185,7 @@ function nameGen() {
     return name;
 };
 
-function positionGen() {
+function positionGen() { // Generates Super Team forward positions
     const positionArray = [
         'Hazardous Material Recovery Operator',
         'Assault Operator',
@@ -197,13 +197,63 @@ function positionGen() {
     return position;
 };
 
-function positionSkillsGen() {
+function antiPositionGen() { // Generates Anti Team forward positions
+    const positionArray = [
+        'Demolitions Operator',
+        'Decoy Assault Operator' // Work in progress
+    ];
+    const position = positionArray[n(positionArray.length)];
+    return position;
+};
+
+function positionSkillsGen() { // Generates forward skills
     const skillsArray = [
         'Deft',
         'Tough',
         'Fortuitous',
         'Strong',
         'Stalwart'
+    ]
+    const skill1 = skillsArray[n(skillsArray.length)];
+    let newArray = skillsArray.filter(item => item !== skill1);
+
+    const skill2 = newArray[n(newArray.length)];
+    newArray = newArray.filter(item => item !== skill2);
+
+    const skill3 = newArray[n(newArray.length)];
+
+    return [skill1, skill2, skill3];
+};
+
+function supportGen() { // Generates Super Team support positions
+    const supportArray = [
+        'Drone Operator',
+        'Information Broker Contact',
+        'Demolitions Advisor',
+        'Hazardous Material Identifification Operator'
+    ];
+    const support = supportArray[n(positionArray.length)];
+    return position;
+};
+
+function antiSupportGen() { // Generates Anti Team support positions
+    const supportArray = [
+        'Drone Operator',
+        'Information Broker Contact',
+        'Demolitions Advisor',
+        'Hazardous Material Identifification Operator'
+    ];
+    const support = supportArray[n(positionArray.length)];
+    return position;
+};
+
+function supportSkillsGen() { // Generates support skills
+    const skillsArray = [
+        'Clairvoyant',
+        'Strategic',
+        'Precise',
+        'Keen',
+        'Insightful'
     ]
     const skill1 = skillsArray[n(skillsArray.length)];
     let newArray = skillsArray.filter(item => item !== skill1);
@@ -429,11 +479,15 @@ teamMembers.forEach((member, index) => {
             break;
         case 3:
         case 4:
+            member.position = supportGen();
+            member.skills = supportSkillsGen();
+            member.category = 'Support';
         case 5:
         case 6:
         case 7:
-        case 8:
             member.category = 'Defender';
+        case 8:
+            member.category = 'Specialist';
     }
 });
 
@@ -452,8 +506,8 @@ antiTeamMembers.forEach((member, index) => {
         case 5:
         case 6:
         case 7:
-        case 8:
             member.category = 'Defender';
+        case 8:
     }
 });
 
@@ -480,13 +534,13 @@ function generateTeamCards(team, teamID) {
             case 'forward':
                 borderColor = '#ffc107';
                 break;
-            case 'midfielder':
+            case 'support':
                 borderColor = '#28a745';
                 break;
             case 'defender':
                 borderColor = '#007bff';
                 break;
-            case 'goalkeeper':
+            case 'special':
                 borderColor = '#dc3545';
                 break;
             default:
