@@ -232,8 +232,8 @@ function supportGen() { // Generates Super Team support positions
         'Demolitions Advisor',
         'Hazardous Material Identifification Operator'
     ];
-    const support = supportArray[n(positionArray.length)];
-    return position;
+    const support = supportArray[n(supportArray.length)];
+    return support;
 };
 
 function antiSupportGen() { // Generates Anti Team support positions
@@ -482,12 +482,15 @@ teamMembers.forEach((member, index) => {
             member.position = supportGen();
             member.skills = supportSkillsGen();
             member.category = 'Support';
+            break;
         case 5:
         case 6:
         case 7:
             member.category = 'Defender';
+            break;
         case 8:
             member.category = 'Specialist';
+            break;
     }
 });
 
@@ -503,11 +506,15 @@ antiTeamMembers.forEach((member, index) => {
             break;
         case 3:
         case 4:
+            member.position = supportGen();
+            member.skills = supportSkillsGen();
+            member.category = 'Support';
         case 5:
         case 6:
         case 7:
             member.category = 'Defender';
         case 8:
+            member.category = 'Specialist';
     }
 });
 
@@ -540,7 +547,7 @@ function generateTeamCards(team, teamID) {
             case 'defender':
                 borderColor = '#007bff';
                 break;
-            case 'special':
+            case 'specialist':
                 borderColor = '#dc3545';
                 break;
             default:
