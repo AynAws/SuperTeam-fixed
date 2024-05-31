@@ -107,7 +107,9 @@ function nameGen() {
         'Suzaku',
         'Migi',
         'Shinichi',
-        'Mamoru'
+        'Mamoru',
+        'Remy',
+        'Dhyanam'
     ];
     first = firstName[n(firstName.length)];
 
@@ -156,7 +158,9 @@ function nameGen() {
         'Benowitz',
         'Kururugi',
         'Izumi',
-        'Uda'
+        'Uda',
+        'Serbinenko',
+        'Gadhiya'
     ];
     last = lastName[n(lastName.length)];
 
