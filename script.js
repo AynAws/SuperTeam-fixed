@@ -191,6 +191,11 @@ function nameGen() {
     return name;
 };
 
+function removeItem(array, item) { //  takes in the array name and item name to remove the item from the array
+    let index = array.indexOf(item);
+    array.splice(index, 1);
+}
+
 let positionArray = [
     'Hazardous Material Recovery Operator',
     'Assault Operator',
@@ -200,16 +205,15 @@ let positionArray = [
 ];
 function positionGen() { // Generates Super Team forward positions
     const position = positionArray[n(positionArray.length)];
-    let index = positionArray.indexOf(position);
-    positionArray.splice(index, 1);
+    removeItem(positionArray, position);
     return position;
 };
 
+const positionArray = [
+    'Demolitions Operator',
+    'Decoy Assault Operator' // Work in progress
+];
 function antiPositionGen() { // Generates Anti Team forward positions
-    const positionArray = [
-        'Demolitions Operator',
-        'Decoy Assault Operator' // Work in progress
-    ];
     const position = positionArray[n(positionArray.length)];
     return position;
 };
