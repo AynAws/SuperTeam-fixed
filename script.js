@@ -109,7 +109,8 @@ function nameGen() {
         'Shinichi',
         'Mamoru',
         'Remy',
-        'Dhyanam'
+        'Dhyanam',
+        'Ali'
     ];
     first = firstName[n(firstName.length)];
 
@@ -160,7 +161,8 @@ function nameGen() {
         'Izumi',
         'Uda',
         'Serbinenko',
-        'Gadhiya'
+        'Gadhiya',
+        'Siddiqui'
     ];
     last = lastName[n(lastName.length)];
 
@@ -189,14 +191,14 @@ function nameGen() {
     return name;
 };
 
+let positionArray = [
+    'Hazardous Material Recovery Operator',
+    'Assault Operator',
+    'Stealth Operator',
+    'Demolitions Operator',
+    'Medical Operator'
+];
 function positionGen() { // Generates Super Team forward positions
-    const positionArray = [
-        'Hazardous Material Recovery Operator',
-        'Assault Operator',
-        'Stealth Operator',
-        'Demolitions Operator',
-        'Medical Operator'
-    ];
     const position = positionArray[n(positionArray.length)];
     return position;
 };
