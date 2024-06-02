@@ -200,6 +200,8 @@ let positionArray = [
 ];
 function positionGen() { // Generates Super Team forward positions
     const position = positionArray[n(positionArray.length)];
+    let index = positionArray.indexOf(position);
+    positionArray.splice(index, 1);
     return position;
 };
 
