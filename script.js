@@ -209,12 +209,12 @@ function positionGen() { // Generates Super Team forward positions
     return position;
 };
 
-const positionArray = [
+let antiPositionArray = [
     'Demolitions Operator',
     'Decoy Assault Operator' // Work in progress
 ];
 function antiPositionGen() { // Generates Anti Team forward positions
-    const position = positionArray[n(positionArray.length)];
+    const position = antiPositionArray[n(positionArray.length)];
     return position;
 };
 
