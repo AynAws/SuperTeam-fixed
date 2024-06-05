@@ -246,8 +246,6 @@ function supportGen() { // Generates Super Team support positions
     ];
     const support = supportArray[n(supportArray.length)];
     return support;
-    const support = supportArray[n(supportArray.length)];
-    return support;
 };
 
 function antiSupportGen() { // Generates Anti Team support positions
