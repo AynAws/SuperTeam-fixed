@@ -107,7 +107,10 @@ function nameGen() {
         'Suzaku',
         'Migi',
         'Shinichi',
-        'Mamoru'
+        'Mamoru',
+        'Remy',
+        'Dhyanam',
+        'Ali'
     ];
     first = firstName[n(firstName.length)];
 
@@ -156,7 +159,10 @@ function nameGen() {
         'Benowitz',
         'Kururugi',
         'Izumi',
-        'Uda'
+        'Uda',
+        'Serbinenko',
+        'Gadhiya',
+        'Siddiqui'
     ];
     last = lastName[n(lastName.length)];
 
@@ -185,24 +191,30 @@ function nameGen() {
     return name;
 };
 
+function removeItem(array, item) { //  takes in the array name and item name to remove the item from the array
+    let index = array.indexOf(item);
+    array.splice(index, 1);
+}
+
+let positionArray = [
+    'Hazardous Material Recovery Operator',
+    'Assault Operator',
+    'Stealth Operator',
+    'Demolitions Operator',
+    'Medical Operator'
+];
 function positionGen() { // Generates Super Team forward positions
-    const positionArray = [
-        'Hazardous Material Recovery Operator',
-        'Assault Operator',
-        'Stealth Operator',
-        'Demolitions Operator',
-        'Medical Operator'
-    ];
     const position = positionArray[n(positionArray.length)];
+    removeItem(positionArray, position);
     return position;
 };
 
+let antiPositionArray = [
+    'Demolitions Operator',
+    'Decoy Assault Operator' // Work in progress
+];
 function antiPositionGen() { // Generates Anti Team forward positions
-    const positionArray = [
-        'Demolitions Operator',
-        'Decoy Assault Operator' // Work in progress
-    ];
-    const position = positionArray[n(positionArray.length)];
+    const position = antiPositionArray[n(positionArray.length)];
     return position;
 };
 
@@ -232,6 +244,8 @@ function supportGen() { // Generates Super Team support positions
         'Demolitions Advisor',
         'Hazardous Material Identifification Operator'
     ];
+    const support = supportArray[n(supportArray.length)];
+    return support;
     const support = supportArray[n(supportArray.length)];
     return support;
 };
@@ -533,12 +547,14 @@ teamMembers.forEach((member, index) => {
             member.skills = supportSkillsGen();
             member.category = 'Support';
             break;
+            break;
         case 5:
         case 6:
         case 7:
             member.position = defendGen();
             member.skills = defendSkillsGen();
             member.category = 'Defender';
+            break;
             break;
         case 8:
             member.category = 'Special';
