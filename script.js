@@ -232,8 +232,8 @@ function supportGen() { // Generates Super Team support positions
         'Demolitions Advisor',
         'Hazardous Material Identifification Operator'
     ];
-    const support = supportArray[n(positionArray.length)];
-    return position;
+    const support = supportArray[n(supportArray.length)];
+    return support;
 };
 
 function antiSupportGen() { // Generates Anti Team support positions
@@ -248,6 +248,56 @@ function antiSupportGen() { // Generates Anti Team support positions
 };
 
 function supportSkillsGen() { // Generates support skills
+    const skillsArray = [
+        'Clairvoyant',
+        'Strategic',
+        'Precise',
+        'Keen',
+        'Insightful'
+    ]
+    const skill1 = skillsArray[n(skillsArray.length)];
+    let newArray = skillsArray.filter(item => item !== skill1);
+
+    const skill2 = newArray[n(newArray.length)];
+    newArray = newArray.filter(item => item !== skill2);
+
+    const skill3 = newArray[n(newArray.length)];
+
+    return [skill1, skill2, skill3];
+};
+
+function supportSkillsGen() { // Generates support skills
+    const skillsArray = [
+        'Clairvoyant',
+        'Strategic',
+        'Precise',
+        'Keen',
+        'Insightful'
+    ]
+    const skill1 = skillsArray[n(skillsArray.length)];
+    let newArray = skillsArray.filter(item => item !== skill1);
+
+    const skill2 = newArray[n(newArray.length)];
+    newArray = newArray.filter(item => item !== skill2);
+
+    const skill3 = newArray[n(newArray.length)];
+
+    return [skill1, skill2, skill3];
+};
+
+function defendGen() { // Generates Super Team defensive positions
+    const positionArray = [
+        'Hazardous Material Recovery Operator',
+        'Assault Operator',
+        'Stealth Operator',
+        'Demolitions Operator',
+        'Medical Operator'
+    ];
+    const position = positionArray[n(positionArray.length)];
+    return position;
+};
+
+function defendSkillsGen() { // Generates defensive skills
     const skillsArray = [
         'Clairvoyant',
         'Strategic',
@@ -284,7 +334,7 @@ function quipGen() {
         `Didn't eat an apple once.`,
         `Believes that unicorns are real.`,
         `Sleeps with a nightlight.`,
-        `Once ate a whole pizza by alone.`,
+        `Once ate a whole pizza alone.`,
         `Wears mismatched socks on purpose.`,
         `Is terrified of spiders.`,
         `Operates at 0.0008334 OPS.`,
@@ -482,12 +532,17 @@ teamMembers.forEach((member, index) => {
             member.position = supportGen();
             member.skills = supportSkillsGen();
             member.category = 'Support';
+            break;
         case 5:
         case 6:
         case 7:
+            member.position = defendGen();
+            member.skills = defendSkillsGen();
             member.category = 'Defender';
+            break;
         case 8:
-            member.category = 'Specialist';
+            member.category = 'Special';
+            break;
     }
 });
 
@@ -503,11 +558,16 @@ antiTeamMembers.forEach((member, index) => {
             break;
         case 3:
         case 4:
+            member.category = 'Support';
+            break;
         case 5:
         case 6:
         case 7:
             member.category = 'Defender';
+            break;
         case 8:
+            member.category = 'Specialist';
+            break;
     }
 });
 
@@ -532,19 +592,19 @@ function generateTeamCards(team, teamID) {
 
         switch (member.category.toLowerCase()) {
             case 'forward':
-                borderColor = '#ffc107';
+                borderColor = '#ffc107'; // yellow
                 break;
             case 'support':
-                borderColor = '#28a745';
+                borderColor = '#28a745'; // green
                 break;
             case 'defender':
-                borderColor = '#007bff';
+                borderColor = '#007bff'; // blue
                 break;
             case 'special':
-                borderColor = '#dc3545';
+                borderColor = '#dc3545'; // red
                 break;
             default:
-                borderColor = '#6c757d';
+                borderColor = '#6c757d'; // grey
         };
 
         card.style.borderColor = borderColor;
