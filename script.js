@@ -110,7 +110,8 @@ function nameGen() {
         'Mamoru',
         'Remy',
         'Dhyanam',
-        'Ali'
+        'Ali',
+        'Ethan'
     ];
     first = firstName[n(firstName.length)];
 
@@ -162,7 +163,8 @@ function nameGen() {
         'Uda',
         'Serbinenko',
         'Gadhiya',
-        'Siddiqui'
+        'Siddiqui',
+        'Chang'
     ];
     last = lastName[n(lastName.length)];
 
